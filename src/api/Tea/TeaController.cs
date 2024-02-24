@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace api;
 
 [ApiController]
-[Route("[controller]")]
-public class TeasController : ControllerBase
+[Route("teas")]
+public class TeaController : ControllerBase
 {
     private readonly TeaRepository repository = new();
 
-    public TeasController() { }
+    public TeaController() { }
 
     [HttpGet]
     public IEnumerable<Tea> Get()
