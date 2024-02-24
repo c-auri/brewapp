@@ -15,4 +15,10 @@ public class TeaController : ControllerBase
     {
         return repository.GetAll(); 
     }
+    
+    [HttpGet("{id:int}")]
+    public Tea GetById(int id)
+    {
+        return repository.GetById(id);
+    }
 }
