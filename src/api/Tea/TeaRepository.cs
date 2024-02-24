@@ -9,7 +9,7 @@ public class TeaRepository
 { 
    private const string teaStorePath = "../../data/teas/";
 
-   internal IEnumerable<Tea> Get()
+   internal IEnumerable<Tea> GetAll()
    {
       return Directory.GetFiles(teaStorePath).Select(Deserialize); 
    }

@@ -11,8 +11,8 @@ public class TeaController : ControllerBase
     public TeaController() { }
 
     [HttpGet]
-    public IEnumerable<Tea> Get()
+    public IEnumerable<Tea> GetAll()
     {
-        return repository.Get(); 
+        return repository.GetAll(); 
     }
 }
