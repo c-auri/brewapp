@@ -22,7 +22,7 @@ public class TeaRepository
    private Tea Deserialize(string file)
    {
       return JsonSerializer.Deserialize<Tea>(
-            File.ReadAllText(file), 
-            new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+         File.ReadAllText(file), 
+         new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
    }
 }
