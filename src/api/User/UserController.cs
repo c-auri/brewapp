@@ -17,8 +17,15 @@ public class UserController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
-    public User GetById(int id)
+    public ActionResult<User> GetById(int id)
     {
-        return repository.GetById(id);
+        var user = repository.GetById(id);
+
+        if (user is null)
+        {
+            return NotFound();
+        }
+
+        return user; 
     }
 }

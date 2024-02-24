@@ -1,1 +1,1 @@
-public record struct User(int Id, string Name);
+public record User(int Id, string Name);

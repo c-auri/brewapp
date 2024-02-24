@@ -14,15 +14,15 @@ public class UserRepository
       return Directory.GetFiles(userStorePath).Select(Deserialize); 
    }
 
-   internal User GetById(int id)
+   internal User? GetById(int id)
    {
-      return GetAll().Single(user => user.Id == id);
+      return GetAll().SingleOrDefault(user => user.Id == id); 
    }
 
    private User Deserialize(string file)
    {
       return JsonSerializer.Deserialize<User>(
           File.ReadAllText(file), 
-          new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+          new JsonSerializerOptions() { PropertyNameCaseInsensitive = true })!;
    }
 }

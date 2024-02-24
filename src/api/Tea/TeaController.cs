@@ -17,8 +17,15 @@ public class TeaController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
-    public Tea GetById(int id)
+    public ActionResult<Tea> GetById(int id)
     {
-        return repository.GetById(id);
+	var tea = repository.GetById(id);
+
+	if (tea is null)
+	{
+	    return NotFound();
+	}
+
+        return tea; 
     }
 }

@@ -14,15 +14,15 @@ public class TeaRepository
       return Directory.GetFiles(teaStorePath).Select(Deserialize); 
    }
 
-   internal Tea GetById(int id)
+   internal Tea? GetById(int id)
    {
-      return GetAll().Single(tea => tea.Id == id);
+      return GetAll().SingleOrDefault(tea => tea.Id == id);
    }
 
    private Tea Deserialize(string file)
    {
       return JsonSerializer.Deserialize<Tea>(
          File.ReadAllText(file), 
-         new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+         new JsonSerializerOptions() { PropertyNameCaseInsensitive = true })!;
    }
 }
