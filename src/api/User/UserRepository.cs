@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 
 namespace api;
 
@@ -11,18 +8,11 @@ public class UserRepository
 
    internal IEnumerable<User> GetAll()
    {
-      return Directory.GetFiles(userStorePath).Select(Deserialize); 
+      return Directory.GetFiles(userStorePath).Select(Serialization.Deserialize<User>); 
    }
 
    internal User? GetById(int id)
    {
       return GetAll().SingleOrDefault(user => user.Id == id); 
-   }
-
-   private User Deserialize(string file)
-   {
-      return JsonSerializer.Deserialize<User>(
-          File.ReadAllText(file), 
-          new JsonSerializerOptions() { PropertyNameCaseInsensitive = true })!;
    }
 }
