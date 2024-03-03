@@ -4,11 +4,11 @@ namespace api;
 
 public class UserRepository 
 { 
-   private const string userStorePath = "../../data/users/";
+   private const string storePath = "../../data/users/";
 
    internal IEnumerable<User> GetAll()
    {
-      return Directory.GetFiles(userStorePath).Select(Serialization.Deserialize<User>); 
+      return Directory.GetFiles(storePath).Select(Serialization.Deserialize<User>); 
    }
 
    internal User? GetById(int id)

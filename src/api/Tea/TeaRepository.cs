@@ -4,11 +4,11 @@ namespace api;
 
 public class TeaRepository 
 { 
-   private const string teaStorePath = "../../data/teas/";
+   private const string storePath = "../../data/teas/";
 
    internal IEnumerable<Tea> GetAll()
    {
-      return Directory.GetFiles(teaStorePath).Select(Serialization.Deserialize<Tea>); 
+      return Directory.GetFiles(storePath).Select(Serialization.Deserialize<Tea>); 
    }
 
    internal Tea? GetById(int id)
